@@ -1,0 +1,24 @@
+{
+  "name": "btch-workers",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers for btch-downloader",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && esbuild src/index.ts --bundle --minify --outfile=dist/index.js --external:node-fetch --platform=browser",
+    "dev": "wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "test": "node --loader tsx src/index.ts"
+  },
+  "dependencies": {
+    "btch-downloader": "^6.0.36",
+    "itty-router": "^4.4.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250115.0",
+    "@types/node": "^20.10.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.29.0"
+  }
+}
